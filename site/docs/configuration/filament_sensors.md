@@ -119,9 +119,9 @@ Some filament sensors, like the orbiter filament sensor, do come with a action b
 ```
 [gcode_button toolhead_filament_sensor_button_t0]
 pin: ^!toolboard_t0:PB4
-release_gcode:
-  _ON_FILAMENT_SENSOR_BUTTON_PRESSED TOOLHEAD=0
 press_gcode:
+  _ON_FILAMENT_SENSOR_BUTTON_PRESSED TOOLHEAD=0
+release_gcode:
 ```
 
 # Orbiter Smart Filament Sensor example configuration
@@ -140,13 +140,13 @@ insert_gcode:
 
 [gcode_button toolhead_filament_sensor_button_t0]
 pin: ^PA14
-release_gcode:
+press_gcode:
     {% if (printer.print_stats.state == "printing") %}
             _ON_TOOLHEAD_FILAMENT_SENSOR_CLOG TOOLHEAD=0
     {% else %}
             _ON_FILAMENT_SENSOR_BUTTON_PRESSED TOOLHEAD=0
     {% endif %}
-press_gcode:
+release_gcode:
 ```
 
 # RatOS Configuration
